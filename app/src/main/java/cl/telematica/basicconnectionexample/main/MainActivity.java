@@ -11,6 +11,9 @@ import cl.telematica.basicconnectionexample.R;
 import cl.telematica.basicconnectionexample.main.presenter.MainPresenterImpl;
 import cl.telematica.basicconnectionexample.models.Libro;
 import cl.telematica.basicconnectionexample.main.view.MainView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
@@ -22,13 +25,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mRecyclerView = findViewById(R.id.recyclerView);
-
+        setTitle("Lista de Libros");
         setRecyclerViewParams();
-
         MainPresenterImpl presenter = new MainPresenterImpl(this);
-        presenter.fetchData("http://www.mocky.io/v2/5bfc6aa9310000780039be36", 15000);
+        //presenter.fetchData("http://www.mocky.io/v2/5bfc6aa9310000780039be36", 15000);
+        presenter.fetchDataWithRetrofit();
     }
 
     @Override
@@ -44,7 +46,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void populateRecyclerView(List<Libro> libros) {
-        mAdapter = new UIAdapter(libros);
+        mAdapter = new UIAdapter(libros,this);
         mRecyclerView.setAdapter(mAdapter);
     }
+
 }

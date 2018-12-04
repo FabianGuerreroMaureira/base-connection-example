@@ -1,5 +1,7 @@
 package cl.telematica.basicconnectionexample.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,12 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Libro {
-
+    @SerializedName("id")
     private int id;
+    @SerializedName("nombre")
     private String nombre;
+    @SerializedName("editorial")
     private String editorial;
+    @SerializedName("genero")
     private String genero;
+    @SerializedName("autor")
     private int autor;
+    @SerializedName("photo")
+    private String foto;
 
     public void setId(int id){
         this.id = id;
@@ -53,6 +61,14 @@ public class Libro {
 
     public void setAutor(int autor) {
         this.autor = autor;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public static List<Libro> getLibros(String result) {
