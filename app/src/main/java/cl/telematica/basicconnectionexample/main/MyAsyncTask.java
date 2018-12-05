@@ -33,7 +33,6 @@ public class MyAsyncTask extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if(result != null) {
-            //populateRecyclerView(Libro.getLibros(result));
             mainView.populateRecyclerView(Libro.getLibros(result));
         }
     }

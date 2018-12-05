@@ -1,5 +1,6 @@
 package cl.telematica.basicconnectionexample.main;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         mRecyclerView = findViewById(R.id.recyclerView);
         setTitle("Lista de Libros");
         setRecyclerViewParams();
-        MainPresenterImpl presenter = new MainPresenterImpl(this);
+        MainPresenterImpl presenter = new MainPresenterImpl(this,this);
         //presenter.fetchData("http://www.mocky.io/v2/5bfc6aa9310000780039be36", 15000);
         presenter.fetchDataWithRetrofit();
     }
